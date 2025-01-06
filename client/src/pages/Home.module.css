@@ -1,89 +1,446 @@
+/* General Styling for Home Page */
 .homePage {
     font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 1440px; /* Ensure content stays within the page width */
+    margin: 0 auto; /* Center the content */
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
+    padding: 0 80px; /* Add consistent 80px margin */
+    box-sizing: border-box;
+}
+
+/* Hero Section */
+.heroSection {
+    position: relative; /* Ensures child elements (text) are positioned relative to this container */
+    width: 100%;
+    height: auto;
+    max-width: 1390px; /* Matches Figma design */
+    margin: 0 auto;
   }
   
-  .hero {
-    text-align: center;
-    background-color: #eef6e9;
-    padding: 2rem;
+  .heroImage {
+    width: 100%;
+    height: auto;
+    display: block;
   }
   
-  .heroContent h1 {
-    font-size: 2.5rem;
-    color: #3a6e3a;
+  .heroText {
+    position: absolute; /* Layers the text on top of the image */
+    top: 20%; /* Adjust to place the text vertically */
+    left: 5%; /* Adjust to place the text horizontally */
+    transform: translateY(-20%); /* Optional: Fine-tune the vertical position */
+    z-index: 2; /* Ensures text is above the image */
+    color: #006838; /* Default color for Wellbeing */
   }
   
-  .heroContent p {
-    font-size: 1.2rem;
-    color: #2c3e50;
+  .heroTitle {
+    font-family: "Kefa", sans-serif;
+    font-size: 64px;
+    font-weight: bold;
+    color: #006838; /* Green color for Wellbeing */
+    margin: 0;
   }
   
-  .heroButton {
-    margin-top: 1rem;
-    background-color: #ffb895;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+  .heroSubtitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 36px;
+    font-weight: 600; /* SemiBold */
+    color: #006838; /* Green color for Assisted Living */
+    margin: 0;
   }
   
-  .mission,
-  .whatWeProvide {
+  .heroTagline {
+    font-family: "Open Sans", sans-serif;
+    font-size: 36px;
+    font-weight: 400; /* Regular */
+    color: #000000; /* Black color for Korean text */
+    margin-top: 8px; /* Adds space between subtitle and tagline */
+  }
+  
+  
+/* Empty Spacer Area */
+.emptyArea {
+    height: 80px; /* Matches Figma specification */
+    background-color: #ffffff;
+}
+
+/* Mission Section */
+.missionSection {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
+    flex-wrap: wrap; /* Stack items vertically on smaller screens */
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 2rem 0; /* Top and bottom spacing */
     gap: 2rem;
-  }
-  
-  .mission .textContent,
-  .whatWeProvide .textContent {
-    flex: 1;
-  }
-  
-  .mission .image,
-  .whatWeProvide .image {
-    flex: 1;
-    max-width: 400px;
+}
+
+.missionImage {
+    width: 475px;
+    height: 475px;
+    object-fit: cover;
     border-radius: 8px;
-  }
-  
-  .features {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .featureCards {
+    position: relative;
+    z-index: 1; /* Ensures proper layering */
+}
+
+.frame23Image {
+    position: absolute;
+    width: 520px; /* Adjust size as needed */
+    height: 520px;
+    z-index: 0; /* Place behind main content */
+    top: -20px;
+    left: -20px;
+}
+
+.missionContent {
+    flex: 1;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .card {
-    background-color: #eef6e9;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1;
-  }
-  
-  .card h3 {
-    color: #3a6e3a;
-  }
-  
-  .card p {
-    color: #2c3e50;
-  }
-  
-  .whatWeProvide button {
-    margin-top: 1rem;
-    background-color: #ffb895;
+    position: relative;
+}
+
+.missionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #006838; /* Green from Figma */
+}
+
+.missionContent p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #231f20; /* Black from Figma */
+}
+
+.missionButtonWrapper {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.missionButton {
+    background: linear-gradient(to bottom, #f98e5c, #ffb895); /* Top-to-bottom gradient */
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px; /* Matches the Figma rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    width: 182px;
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.missionButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Why Choose Section */
+.whyChooseSection {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-family: "Kefa", sans-serif; /* Figma font */
+    font-size: 2.5rem; /* Matches Figma */
+    color: #006838; /* Wellbeing Green */
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.whyChooseTitle {
+    font-family: "Kefa", sans-serif; /* Figma font */
+    font-size: 2.5rem; /* Matches Figma */
+    color: #006838; /* Wellbeing Green */
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.iconGrid {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: nowrap; /* Ensure items stay in a single row */
+    gap: 1rem; /* Adjust spacing between the cards */
+}
+
+/* Individual icon cards */
+.iconCard {
+    flex: 1; /* Allow cards to evenly distribute space */
+    max-width: 320px; /* Ensure consistent card width */
+    background-color: #eef6e9; /* Light Green background */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for effect */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem; /* Adjust padding for spacing */
+    text-align: center;
+}
+
+
+/* Icon images within cards */
+.iconCard img {
+    width: 86px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.iconCard h3 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600; /* SemiBold */
+    color: #006838;
+    margin: 0 0 0.5rem 0;
+}
+
+.iconCard p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400; /* Regular */
+    color: #231f20; /* Black */
+    line-height: 1.5;
+}
+/* Title styling */
+.iconTitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600; /* SemiBold */
+    color: #006838;
+    margin: 0 0 0.5rem 0;
+}
+
+/* Description text */
+.iconDescription {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400; /* Regular */
+    color: #231f20; /* Black */
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .iconGrid {
+        flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+        justify-content: center; /* Center-align cards */
+    }
+
+    .iconCard {
+        max-width: 100%; /* Let cards take full width on smaller screens */
+        margin-bottom: 1rem; /* Add spacing between rows */
+    }
+}
+
+/* What We Provide Section */
+.provideSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 80px; /* Ensure consistent spacing */
+    gap: 2rem;
+    box-sizing: border-box;
+}
+
+.provideContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.provideTitle {
+    font-family: 'Kefa', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #006838;
+}
+
+.provideDescription {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #231f20;
+}
+
+.provideButton {
+    width: 286px;
+    height: 57px;
+    background: linear-gradient(to bottom, #f98e5c, #ffb895);
+    color: #ffffff;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.provideButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.provideImage {
+    flex: 1;
+    width: 475px;
+    height: 475px;
+    object-fit: cover;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.provideFrame23 {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    z-index: 0;
+    top: -20px;
+    left: -20px;
+}
+
+/* Contact Section */
+/* General Contact Section Styling */
+.contactSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1440px;
+    margin: 80px auto; /* Ensures 80px margin around */
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: #ffffff; /* Background is white */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   }
   
+  /* Contact Logo Section */
+  .contactLogo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .contactLogoImage {
+    width: 180px;
+    height: auto;
+  }
+  
+  
+  .contactLinks li a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 18px;
+    color: #000000; /* Black */
+    text-decoration: none;
+  }
+  .contactLinks li a:hover {
+    text-decoration: underline; /* Optional hover effect */
+  }
+  /* Contact Form Section */
+  .contactFormContainer {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+  }
+  
+  .contactTitle {
+    font-family: "Kefa", sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #006838; /* Wellbeing green */
+    margin-bottom: 1rem;
+  }
+  
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .formRow {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .contactForm div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .contactForm label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600; /* SemiBold */
+    color: #000000; /* Black text */
+  }
+  
+  .contactForm input,
+  .contactForm textarea {
+    flex: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400; /* Regular */
+    color: #000000; /* Black text */
+    padding: 0.75rem;
+    border: 1px solid #d9d9d9; /* Light gray border */
+    border-radius: 8px;
+    background-color: #ffffff; /* White background */
+    box-sizing: border-box;
+  }
+  
+  .contactForm textarea {
+    min-height: 120px;
+    resize: none;
+  }
+  
+  .contactForm button {
+    width: 158px;
+    height: 57px;
+    background: linear-gradient(to bottom, #f98e5c, #ffb895);
+    color: #ffffff; /* White text */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .contactForm button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }

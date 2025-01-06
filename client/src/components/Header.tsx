@@ -1,26 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LanguageSelector from './LanguageSelector';
+import logo from '../assets/logo.png'; // Replace with your actual logo path
 import styles from './Header.module.css';
 
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <img src="/path/to/logo.svg" alt="Wellbeing Assisted Living" />
-        <span>Wellbeing Assisted Living</span>
+      <div className={styles.logoContainer}>
+        <Link to="/">
+          <img src={logo} alt="Wellbeing Assisted Living Logo" className={styles.logo} />
+        </Link>
       </div>
       <nav className={styles.nav}>
-        <ul className={styles.navList}>
-          <li><Link to="/" className={styles.navItem}>Home</Link></li>
-          <li><Link to="/about" className={styles.navItem}>About Us</Link></li>
-          <li><Link to="/services" className={styles.navItem}>Services</Link></li>
-          <li><Link to="/facility" className={styles.navItem}>Facility</Link></li>
-        </ul>
+        <Link to="/" className={styles.navLink}>Home</Link>
+        <Link to="/about" className={styles.navLink}>About Us</Link>
+        <Link to="/services" className={styles.navLink}>Services</Link>
+        <Link to="/facility" className={styles.navLink}>Facility</Link>
+        <div className={styles.language}>
+          <select>
+            <option value="en">English</option>
+            <option value="ko">한국어</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
       </nav>
-      <div className={styles.language}>
-        <LanguageSelector />
-      </div>
     </header>
   );
 };
