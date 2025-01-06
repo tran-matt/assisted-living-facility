@@ -1,0 +1,89 @@
+.homePage {
+    font-family: Arial, sans-serif;
+  }
+  
+  .hero {
+    text-align: center;
+    background-color: #eef6e9;
+    padding: 2rem;
+  }
+  
+  .heroContent h1 {
+    font-size: 2.5rem;
+    color: #3a6e3a;
+  }
+  
+  .heroContent p {
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+  
+  .heroButton {
+    margin-top: 1rem;
+    background-color: #ffb895;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .mission,
+  .whatWeProvide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .mission .textContent,
+  .whatWeProvide .textContent {
+    flex: 1;
+  }
+  
+  .mission .image,
+  .whatWeProvide .image {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  
+  .features {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .featureCards {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .card {
+    background-color: #eef6e9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+  }
+  
+  .card h3 {
+    color: #3a6e3a;
+  }
+  
+  .card p {
+    color: #2c3e50;
+  }
+  
+  .whatWeProvide button {
+    margin-top: 1rem;
+    background-color: #ffb895;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

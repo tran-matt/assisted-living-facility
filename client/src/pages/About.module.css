@@ -1,0 +1,21 @@
+.hero {
+    text-align: center;
+    padding: 2rem;
+    background-color: #eef6e9;
+  }
+  
+  .about {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .button {
+    background-color: #ffb895;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }

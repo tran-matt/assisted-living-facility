@@ -1,0 +1,74 @@
+.facilityPage {
+    font-family: Arial, sans-serif;
+    color: #2c3e50;
+    position: relative;
+    z-index: 0;
+  }
+  
+  header {
+    position: relative;
+    z-index: 10; /* Ensure the header is above other elements */
+  }
+  
+  .hero {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1; /* Ensure the hero does not overlap the header */
+  }
+  
+  .heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .facilityInfo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    text-align: left;
+    gap: 20px;
+  }
+  
+  .textContent {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .image {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .gallery {
+    width: 90%;
+    margin: 30px auto;
+    text-align: center;
+  }
+  
+  .sectionHeading {
+    color: #3a6e3a;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .carousel {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .carouselImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 10px;
+  }
+  

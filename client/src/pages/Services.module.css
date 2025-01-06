@@ -1,0 +1,71 @@
+/* General Page Layout */
+.servicesPage {
+    font-family: Arial, sans-serif;
+    color: #2c3e50;
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    background-color: #eef6e9;
+    padding: 2rem;
+  }
+  
+  /* Services Description Section */
+  .servicesDescription {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .servicesDescription .textContent {
+    flex: 1;
+  }
+  
+  .servicesDescription .image {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  
+  /* Services Levels Section */
+  .servicesLevels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 2rem;
+    background-color: #f9f9f9;
+  }
+  
+  .servicesLevels .textContent {
+    flex: 1;
+  }
+  
+  .servicesLevels .image {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  
+  /* Additional Styles */
+  ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  
+  h1, h2 {
+    color: #3a6e3a;
+  }
+  
+  button {
+    background-color: #ffb895;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
