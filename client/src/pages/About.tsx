@@ -1,17 +1,80 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import styles from './About.module.css'; 
+import emailjs from 'emailjs-com';
+import styles from './About.module.css';
 import twoElderlyImage from '../assets/Two Elderly.png';
 import vaseImage from '../assets/Vase.png';
 import handsImage from '../assets/Hands.png';
 import logo from '../assets/logo.png';
 
 const About: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [status, setStatus] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  // Handle language change
+  const handleLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
+    setShowDropdown(false);
+  };
+
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        'YOUR_USER_ID' // Replace with your EmailJS user ID
+      )
+      .then(
+        () => {
+          setStatus('success');
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            message: '',
+          });
+        },
+        () => {
+          setStatus('error');
+        }
+      );
+  };
+
   return (
     <div className={styles.aboutPage}>
       {/* Hero Section */}
       <section className={styles.heroSection}>
-        <img className={styles.heroImage} src={twoElderlyImage} alt="Two elderly people walking together" />
+        <img
+          className={styles.heroImage}
+          src={twoElderlyImage}
+          alt={t('about.heroAlt')}
+        />
       </section>
 
       {/* Empty Space */}
@@ -20,16 +83,18 @@ const About: React.FC = () => {
       {/* About Section */}
       <section className={styles.aboutSection}>
         <div className={styles.aboutContent}>
-          <h1 className={styles.aboutTitle}>About us</h1>
-          <p className={styles.aboutText}>
-            <strong>Wellbeing Assisted Living</strong> (<strong>웰빙 노인 요양원</strong>) is a place that offers a safe residential option for seniors in a peaceful home-like environment. Here, they will receive assistance for their day-to-day needs while maintaining their respect, dignity, and independence.
-          </p>
-          <p className={styles.aboutText}>
-            Wellbeing Assisted Living provides superior care for individuals and works closely with their families and health care providers to ensure the utmost quality of life. We are a Korean and English speaking facility that specializes in care for Korean-speaking seniors.
-          </p>
-          <button className={styles.aboutButton}>View Our Services</button>
+          <h1 className={styles.aboutTitle}>{t('about.title')}</h1>
+          <p className={styles.aboutText}>{t('about.text1')}</p>
+          <p className={styles.aboutText}>{t('about.text2')}</p>
+          <Link to="/services" className={styles.aboutButton}>
+            {t('about.viewServicesButton')}
+          </Link>
         </div>
-        <img className={styles.aboutImage} src={vaseImage} alt="Person watering plants" />
+        <img
+          className={styles.aboutImage}
+          src={vaseImage}
+          alt={t('about.vaseAlt')}
+        />
       </section>
 
       {/* Empty Space */}
@@ -37,19 +102,25 @@ const About: React.FC = () => {
 
       {/* Certifications Section */}
       <section className={styles.certificationsSection}>
-        <img className={styles.certificationsImage} src={handsImage} alt="Hands holding each other" />
+        <img
+          className={styles.certificationsImage}
+          src={handsImage}
+          alt={t('about.certificationsAlt')}
+        />
         <div className={styles.certificationsContent}>
-          <h2 className={styles.certificationsTitle}>Certifications & Qualifications</h2>
+          <h2 className={styles.certificationsTitle}>
+            {t('about.certificationsTitle')}
+          </h2>
           <p className={styles.certificationsIntro}>
-            Julie Kim is the owner and founder of Wellbeing Assisted Living, a Maryland State licensed facility. With over 10 years of experience, she has devoted her life to caring for senior citizens and establishing a place they can call home.
+            {t('about.certificationsIntro')}
           </p>
           <ul className={styles.certificationsList}>
-            <li>State of Maryland Licensed Facility</li>
-            <li>Certified Assisted Living Manager</li>
-            <li>Geriatric Nursing Assistant (GNA) through the Maryland Board of Nursing</li>
-            <li>Medication Technician (Maryland Board of Nursing)</li>
-            <li>CPR & First Aid Certified</li>
-            <li>Bilingual in Korean & English</li>
+            <li>{t('about.certification1')}</li>
+            <li>{t('about.certification2')}</li>
+            <li>{t('about.certification3')}</li>
+            <li>{t('about.certification4')}</li>
+            <li>{t('about.certification5')}</li>
+            <li>{t('about.certification6')}</li>
           </ul>
         </div>
       </section>
@@ -60,42 +131,102 @@ const About: React.FC = () => {
       {/* Contact Section */}
       <section className={styles.contactSection}>
         <div className={styles.contactLogo}>
-          <img src={logo} alt="Wellbeing Assisted Living Logo" className={styles.contactLogoImage} />
+          <img
+            src={logo}
+            alt={t('home.contactLogoAlt')}
+            className={styles.contactLogoImage}
+          />
           <ul className={styles.contactLinks}>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/services">Services</Link></li>
-            <li><Link to="/facility">Facility</Link></li>
-            <li><Link to="/language">Language</Link></li>
+            <li>
+              <Link to="/about">{t('home.contactAboutLink')}</Link>
+            </li>
+            <li>
+              <Link to="/services">{t('home.contactServicesLink')}</Link>
+            </li>
+            <li>
+              <Link to="/facility">{t('home.contactFacilityLink')}</Link>
+            </li>
+            <li
+              className={styles.languageMenu}
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              Language
+              {showDropdown && (
+                <ul className={styles.dropdown}>
+                  <li onClick={() => handleLanguageChange('en')}>English</li>
+                  <li onClick={() => handleLanguageChange('ko')}>한국어</li>
+                  <li onClick={() => handleLanguageChange('es')}>Español</li>
+                </ul>
+              )}
+            </li>
           </ul>
         </div>
         <div className={styles.contactFormContainer}>
-          <h2 className={styles.contactTitle}>Contact us</h2>
-          <form className={styles.contactForm}>
+          <h2 className={styles.contactTitle}>{t('home.contactTitle')}</h2>
+          {status === 'success' && <p className={styles.successMessage}>Email sent successfully!</p>}
+          {status === 'error' && <p className={styles.errorMessage}>Failed to send email. Please try again.</p>}
+          <form className={styles.contactForm} onSubmit={handleSubmit}>
             <div className={styles.formRow}>
               <div>
-                <label htmlFor="firstName">First name *</label>
-                <input type="text" id="firstName" name="firstName" required />
+                <label htmlFor="firstName">{t('home.contactFirstNameLabel')}</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div>
-                <label htmlFor="lastName">Last name *</label>
-                <input type="text" id="lastName" name="lastName" required />
+                <label htmlFor="lastName">{t('home.contactLastNameLabel')}</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
             </div>
             <div className={styles.formRow}>
               <div>
-                <label htmlFor="email">Email address *</label>
-                <input type="email" id="email" name="email" required />
+                <label htmlFor="email">{t('home.contactEmailLabel')}</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div>
-                <label htmlFor="phone">Phone number (Optional)</label>
-                <input type="tel" id="phone" name="phone" />
+                <label htmlFor="phone">{t('home.contactPhoneLabel')}</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             <div>
-              <label htmlFor="message">Message *</label>
-              <textarea id="message" name="message" required></textarea>
+              <label htmlFor="message">{t('home.contactMessageLabel')}</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
             </div>
-            <button type="submit" className={styles.contactSubmit}>Submit</button>
+            <button type="submit" className={styles.contactSubmit}>
+              {t('home.contactSubmitButton')}
+            </button>
           </form>
         </div>
       </section>

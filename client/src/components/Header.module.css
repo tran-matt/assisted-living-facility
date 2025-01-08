@@ -4,12 +4,12 @@
     align-items: center;
     width: 100%;
     max-width: 1440px;
-    height: 116px; /* Set to match Figma's height */
+    height: 116px; 
     margin: 0 auto;
-    padding: 0 36px; /* Adds internal spacing */
-    background-color: #ffffff; /* Matches Figma */
-    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1); /* Matches Figma shadow */
-    box-sizing: border-box; /* Includes padding in width/height calculations */
+    padding: 0 36px; 
+    background-color: #ffffff; 
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1); 
+    box-sizing: border-box; 
 }
 
 .logoContainer {
@@ -18,28 +18,28 @@
 }
 
 .logo {
-    max-height: 80px; /* Scales proportionally */
-    height: 100%; /* Adjusts to the container's height */
-    object-fit: contain; /* Ensures the image maintains aspect ratio */
+    max-height: 80px; 
+    height: 100%; 
+    object-fit: contain; 
 }
 
 .nav {
     display: flex;
-    gap: 24px; /* Spacing between navigation links */
+    gap: 24px; 
     align-items: center;
 }
 
 .navLink {
     text-decoration: none;
     color: #231f20;
-    font-size: 20px; /* Matches Figma */
+    font-size: 20px; 
     font-family: 'SF Pro', sans-serif;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .navLink:hover {
-    color: #006838; /* Green hover color */
+    color: #006838; 
 }
 
 .language {
@@ -55,19 +55,19 @@
     font-size: 18px;
     font-family: 'SF Pro', sans-serif;
     font-weight: bold;
-    padding: 8px 12px; /* Matches Figma padding */
+    padding: 8px 12px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    appearance: none; /* Removes native dropdown arrow */
+    appearance: none;
     cursor: pointer;
-    width: 120px; /* Ensures proper width for text and arrow */
+    width: 120px; 
 }
 
 .language::after {
     content: '▼';
     font-size: 12px;
     position: absolute;
-    right: 12px; /* Proper spacing for arrow */
+    right: 12px; 
     top: 50%;
     transform: translateY(-50%);
     color: #231f20;
@@ -76,5 +76,5 @@
 
 .language select:focus {
     outline: none;
-    box-shadow: 0 0 6px rgba(0, 104, 56, 0.3); /* Green focus glow */
+    box-shadow: 0 0 6px rgba(0, 104, 56, 0.3);
 }

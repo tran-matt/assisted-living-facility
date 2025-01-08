@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import emailjs from 'emailjs-com';
 import styles from './Facility.module.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -15,6 +17,60 @@ import img7 from '../assets/7.png';
 import img8 from '../assets/8.png';
 
 const Facility: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [status, setStatus] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
+    setShowDropdown(false); // Close dropdown after selection
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        'YOUR_USER_ID' // Replace with your EmailJS user ID
+      )
+      .then(
+        () => {
+          setStatus('success');
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            message: '',
+          });
+        },
+        () => {
+          setStatus('error');
+        }
+      );
+  };
+
   const images = [img1, img2, img3, img4, img5, img6, img7, img8];
 
   return (
@@ -24,7 +80,7 @@ const Facility: React.FC = () => {
         <img
           className={styles.heroImage}
           src={livingRoomImage}
-          alt="Living room at the facility"
+          alt={t('facility.heroAlt')}
         />
       </section>
 
@@ -34,33 +90,29 @@ const Facility: React.FC = () => {
       {/* Our Facility Section */}
       <section className={styles.ourFacilitySection}>
         <div className={styles.facilityContent}>
-          <h1 className={styles.facilityTitle}>Our Facility</h1>
-          <p className={styles.facilityDescription}>
-            Wellbeing Assisted Living is a home facility that is warm and welcoming to all of our
-            residents and their visitors. We offer a clean and safe space so that our residents can
-            be comfortable and at ease in their new home.
-          </p>
+          <h1 className={styles.facilityTitle}>{t('facility.title')}</h1>
+          <p className={styles.facilityDescription}>{t('facility.description')}</p>
           <div className={styles.facilityDetails}>
             <div className={styles.location}>
-              <p className={styles.detailTitle}>Location</p>
-              <p className={styles.detailText}>16400 S Westland Dr. Gaithersburg, MD 20877</p>
+              <p className={styles.detailTitle}>{t('facility.locationTitle')}</p>
+              <p className={styles.detailText}>{t('facility.locationText')}</p>
             </div>
             <div className={styles.visitingHours}>
-              <p className={styles.detailTitle}>Visiting Hours</p>
-              <p className={styles.detailText}>10:00 AM - 5:00 PM (By appointment only)</p>
+              <p className={styles.detailTitle}>{t('facility.visitingHoursTitle')}</p>
+              <p className={styles.detailText}>{t('facility.visitingHoursText')}</p>
             </div>
           </div>
         </div>
         <img
           className={styles.facilityImage}
           src={pianoImage}
-          alt="Piano and fireplace area in the facility"
+          alt={t('facility.pianoAlt')}
         />
       </section>
 
       {/* Photo Gallery Section */}
       <section className={styles.gallerySection}>
-        <h2 className={styles.galleryTitle}>Photo Gallery</h2>
+        <h2 className={styles.galleryTitle}>{t('facility.galleryTitle')}</h2>
         <Carousel
           additionalTransfrom={0}
           arrows
@@ -100,7 +152,7 @@ const Facility: React.FC = () => {
             <img
               key={index}
               src={image}
-              alt={`Gallery image ${index + 1}`}
+              alt={t('facility.galleryImageAlt', { index: index + 1 })}
               className={styles.carouselImage}
             />
           ))}
@@ -112,53 +164,99 @@ const Facility: React.FC = () => {
         <div className={styles.contactLogo}>
           <img
             src={logo}
-            alt="Wellbeing Assisted Living Logo"
+            alt={t('facility.contactLogoAlt')}
             className={styles.contactLogoImage}
           />
           <ul className={styles.contactLinks}>
             <li>
-              <a href="/about">About Us</a>
+              <a href="/about">{t('facility.contactAboutLink')}</a>
             </li>
             <li>
-              <a href="/services">Services</a>
+              <a href="/services">{t('facility.contactServicesLink')}</a>
             </li>
             <li>
-              <a href="/facility">Facility</a>
+              <a href="/facility">{t('facility.contactFacilityLink')}</a>
             </li>
-            <li>
-              <a href="/language">Language</a>
+            <li
+              className={styles.languageMenu}
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              Language
+              {showDropdown && (
+                <ul className={styles.dropdown}>
+                  <li onClick={() => handleLanguageChange('en')}>English</li>
+                  <li onClick={() => handleLanguageChange('ko')}>한국어</li>
+                  <li onClick={() => handleLanguageChange('es')}>Español</li>
+                </ul>
+              )}
             </li>
           </ul>
         </div>
         <div className={styles.contactFormContainer}>
-          <h2 className={styles.contactTitle}>Contact us</h2>
-          <form className={styles.contactForm}>
+          <h2 className={styles.contactTitle}>{t('facility.contactTitle')}</h2>
+          {status === 'success' && <p className={styles.successMessage}>Email sent successfully!</p>}
+          {status === 'error' && <p className={styles.errorMessage}>Failed to send email. Please try again.</p>}
+          <form className={styles.contactForm} onSubmit={handleSubmit}>
             <div className={styles.formRow}>
               <div>
-                <label htmlFor="firstName">First name *</label>
-                <input type="text" id="firstName" name="firstName" required />
+                <label htmlFor="firstName">{t('facility.contactFirstNameLabel')}</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div>
-                <label htmlFor="lastName">Last name *</label>
-                <input type="text" id="lastName" name="lastName" required />
+                <label htmlFor="lastName">{t('facility.contactLastNameLabel')}</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
             </div>
             <div className={styles.formRow}>
               <div>
-                <label htmlFor="email">Email address *</label>
-                <input type="email" id="email" name="email" required />
+                <label htmlFor="email">{t('facility.contactEmailLabel')}</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div>
-                <label htmlFor="phone">Phone number (Optional)</label>
-                <input type="tel" id="phone" name="phone" />
+                <label htmlFor="phone">{t('facility.contactPhoneLabel')}</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             <div>
-              <label htmlFor="message">Message *</label>
-              <textarea id="message" name="message" required></textarea>
+              <label htmlFor="message">{t('facility.contactMessageLabel')}</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
             </div>
             <button type="submit" className={styles.contactSubmit}>
-              Submit
+              {t('facility.contactSubmitButton')}
             </button>
           </form>
         </div>

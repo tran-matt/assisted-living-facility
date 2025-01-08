@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import emailjs from 'emailjs-com';
 import styles from './Home.module.css';
-import heroImage from '../assets/Hero Image (Home).png';
 import missionImage from '../assets/Image_OurMission.png';
 import homeIcon from '../assets/home icon.png';
 import foodIcon from '../assets/food icon.png';
@@ -12,67 +13,111 @@ import frame23Image from '../assets/Frame 23.png';
 import logo from '../assets/logo.png';
 
 const Home: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [status, setStatus] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  // Handle language change
+  const handleLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
+    setShowDropdown(false);
+  };
+
+  // Handle form input change
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        'YOUR_USER_ID' // Replace with your EmailJS user ID
+      )
+      .then(
+        () => {
+          setStatus('success');
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            message: '',
+          });
+        },
+        () => {
+          setStatus('error');
+        }
+      );
+  };
+
   return (
     <div className={styles.homePage}>
       {/* Hero Section */}
       <section className={styles.heroSection}>
-        <img className={styles.heroImage} src={heroImage} alt="Hero Scene" />
         <div className={styles.heroText}>
-          <h1 className={styles.heroTitle}>Wellbeing</h1>
-          <h2 className={styles.heroSubtitle}>Assisted Living</h2>
-          <p className={styles.heroTagline}>웰빙 노인 요양원</p>
+          <h1 className={styles.heroTitle}>{t('home.heroTitle')}</h1>
+          <h2 className={styles.heroSubtitle}>{t('home.heroSubtitle')}</h2>
+          <p className={styles.heroTagline}>{t('home.heroTagline')}</p>
         </div>
       </section>
 
       {/* Mission Section */}
       <section className={styles.missionSection}>
-        <img className={styles.missionImage} src={missionImage} alt="Elderly woman" />
-        <img className={styles.frame23Image} src={frame23Image} alt="Decorative image" />
+        <img className={styles.missionImage} src={missionImage} alt={t('home.missionAlt')} />
+        <img className={styles.frame23Image} src={frame23Image} alt={t('home.decorativeAlt')} />
         <div className={styles.missionContent}>
-          <h2 className={styles.missionTitle}>Our Mission</h2>
-          <p>
-            The mission of Wellbeing Assisted Living is to provide the best care and assistance for seniors in a
-            home-like environment and a family atmosphere at an affordable rate. All of the comforts of home are
-            provided with the utmost attention to detail. Our staff cares for each resident as if they are family and
-            also encourages the resident’s family members to come by during visiting hours.
-          </p>
+          <h2 className={styles.missionTitle}>{t('home.missionTitle')}</h2>
+          <p>{t('home.missionText')}</p>
           <div className={styles.missionButtonWrapper}>
-            <Link to="/about" className={styles.missionButton}>About Us</Link>
+            <Link to="/about" className={styles.missionButton}>
+              {t('home.aboutButton')}
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Why Choose Section */}
       <section className={styles.whyChooseSection}>
-        <h2 className={styles.sectionTitle}>Why choose Wellbeing Assisted Living</h2>
+        <h2 className={styles.sectionTitle}>{t('home.whyChooseTitle')}</h2>
         <div className={styles.iconGrid}>
           <div className={styles.iconCard}>
-            <img src={homeIcon} alt="Home icon" className={styles.iconImage} />
-            <h3 className={styles.iconTitle}>A place to call home</h3>
-            <p className={styles.iconDescription}>
-              Experience the joy of comfort in our safe and welcoming environment.
-            </p>
+            <img src={homeIcon} alt={t('home.icon1Alt')} className={styles.iconImage} />
+            <h3 className={styles.iconTitle}>{t('home.icon1Title')}</h3>
+            <p className={styles.iconDescription}>{t('home.icon1Description')}</p>
           </div>
           <div className={styles.iconCard}>
-            <img src={foodIcon} alt="Food icon" className={styles.iconImage} />
-            <h3 className={styles.iconTitle}>Home-cooked meals</h3>
-            <p className={styles.iconDescription}>
-              Delight in delicious and nutritious homemade meals every day.
-            </p>
+            <img src={foodIcon} alt={t('home.icon2Alt')} className={styles.iconImage} />
+            <h3 className={styles.iconTitle}>{t('home.icon2Title')}</h3>
+            <p className={styles.iconDescription}>{t('home.icon2Description')}</p>
           </div>
           <div className={styles.iconCard}>
-            <img src={heartIcon} alt="Heart icon" className={styles.iconImage} />
-            <h3 className={styles.iconTitle}>Customized care</h3>
-            <p className={styles.iconDescription}>
-              Embrace personalized care tailored to your unique needs and goals.
-            </p>
+            <img src={heartIcon} alt={t('home.icon3Alt')} className={styles.iconImage} />
+            <h3 className={styles.iconTitle}>{t('home.icon3Title')}</h3>
+            <p className={styles.iconDescription}>{t('home.icon3Description')}</p>
           </div>
           <div className={styles.iconCard}>
-            <img src={peopleIcon} alt="People icon" className={styles.iconImage} />
-            <h3 className={styles.iconTitle}>Visiting hours</h3>
-            <p className={styles.iconDescription}>
-              Cherish quality time with family and loved ones, encouraged and celebrated.
-            </p>
+            <img src={peopleIcon} alt={t('home.icon4Alt')} className={styles.iconImage} />
+            <h3 className={styles.iconTitle}>{t('home.icon4Title')}</h3>
+            <p className={styles.iconDescription}>{t('home.icon4Description')}</p>
           </div>
         </div>
       </section>
@@ -80,60 +125,125 @@ const Home: React.FC = () => {
       {/* What We Provide Section */}
       <section className={styles.provideSection}>
         <div className={styles.provideContent}>
-          <h2 className={styles.provideTitle}>What we provide</h2>
-          <p className={styles.provideDescription}>
-            Wellbeing Assisted Living provides a continuum of care to the fullest extent, 
-            providing appropriate support services to senior citizens by allowing them to 
-            maintain <strong>choice, control, independence, dignity, and privacy</strong> 
-            that they would have at their own home.
-          </p>
-          <Link to="/services" className={styles.provideButton}>View Our Services</Link>
+          <h2 className={styles.provideTitle}>{t('home.provideTitle')}</h2>
+          <p className={styles.provideDescription}>{t('home.provideDescription')}</p>
+          <Link to="/services" className={styles.provideButton}>
+            {t('home.viewServicesButton')}
+          </Link>
         </div>
         <div className={styles.provideImages}>
-          <img className={styles.provideImage} src={frame22Image} alt="Senior man giving thumbs up" />
-          <img className={styles.provideFrame23} src={frame23Image} alt="Decorative image" />
+          <img
+            className={styles.provideImage}
+            src={frame22Image}
+            alt={t('home.provideImageAlt')}
+          />
+          <img
+            className={styles.provideFrame23}
+            src={frame23Image}
+            alt={t('home.decorativeAlt')}
+          />
         </div>
       </section>
 
       {/* Contact Section */}
       <section className={styles.contactSection}>
         <div className={styles.contactLogo}>
-          <img src={logo} alt="Wellbeing Assisted Living Logo" className={styles.contactLogoImage} />
+          <img
+            src={logo}
+            alt={t('home.contactLogoAlt')}
+            className={styles.contactLogoImage}
+          />
           <ul className={styles.contactLinks}>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/services">Services</Link></li>
-            <li><Link to="/facility">Facility</Link></li>
-            <li><Link to="/language">Language</Link></li>
+            <li>
+              <Link to="/about">{t('home.contactAboutLink')}</Link>
+            </li>
+            <li>
+              <Link to="/services">{t('home.contactServicesLink')}</Link>
+            </li>
+            <li>
+              <Link to="/facility">{t('home.contactFacilityLink')}</Link>
+            </li>
+            <li
+              className={styles.languageMenu}
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              {t('header.language')}
+              {showDropdown && (
+                <ul className={styles.dropdown}>
+                  <li onClick={() => handleLanguageChange('en')}>English</li>
+                  <li onClick={() => handleLanguageChange('ko')}>한국어</li>
+                  <li onClick={() => handleLanguageChange('es')}>Español</li>
+                </ul>
+              )}
+            </li>
           </ul>
         </div>
         <div className={styles.contactFormContainer}>
-          <h2 className={styles.contactTitle}>Contact us</h2>
-          <form className={styles.contactForm}>
+          <h2 className={styles.contactTitle}>{t('home.contactTitle')}</h2>
+          {status === 'success' && <p className={styles.successMessage}>Email sent successfully!</p>}
+          {status === 'error' && <p className={styles.errorMessage}>Failed to send email. Please try again.</p>}
+          <form className={styles.contactForm} onSubmit={handleSubmit}>
             <div className={styles.formRow}>
               <div>
-                <label htmlFor="firstName">First name *</label>
-                <input type="text" id="firstName" name="firstName" required />
+                <label htmlFor="firstName">{t('home.contactFirstNameLabel')}</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div>
-                <label htmlFor="lastName">Last name *</label>
-                <input type="text" id="lastName" name="lastName" required />
+                <label htmlFor="lastName">{t('home.contactLastNameLabel')}</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
             </div>
             <div className={styles.formRow}>
               <div>
-                <label htmlFor="email">Email address *</label>
-                <input type="email" id="email" name="email" required />
+                <label htmlFor="email">{t('home.contactEmailLabel')}</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div>
-                <label htmlFor="phone">Phone number (Optional)</label>
-                <input type="tel" id="phone" name="phone" />
+                <label htmlFor="phone">{t('home.contactPhoneLabel')}</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             <div>
-              <label htmlFor="message">Message *</label>
-              <textarea id="message" name="message" required></textarea>
+              <label htmlFor="message">{t('home.contactMessageLabel')}</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
             </div>
-            <button type="submit" className={styles.contactSubmit}>Submit</button>
+            <button type="submit" className={styles.contactSubmit}>
+              {t('home.contactSubmitButton')}
+            </button>
           </form>
         </div>
       </section>

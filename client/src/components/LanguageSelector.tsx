@@ -5,7 +5,6 @@ const LanguageSelector: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(event.target.value);
-    // You can add logic here to change the displayed text based on the language.
   };
 
   return (
