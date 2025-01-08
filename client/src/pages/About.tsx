@@ -6,7 +6,7 @@ import styles from './About.module.css';
 import twoElderlyImage from '../assets/Two Elderly.png';
 import vaseImage from '../assets/Vase.png';
 import handsImage from '../assets/Hands.png';
-import logo from '../assets/logo.png';
+import logo from '../assets/Logo.png';
 
 const About: React.FC = () => {
   const { t, i18n } = useTranslation();

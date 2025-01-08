@@ -6,7 +6,7 @@ import styles from './Services.module.css';
 import oldHandsImage from '../assets/Old Hands.png';
 import soupImage from '../assets/Soup.png';
 import medicationImage from '../assets/Medication.png';
-import logo from '../assets/logo.png';
+import logo from '../assets/Logo.png';
 
 const Services: React.FC = () => {
   const { t, i18n } = useTranslation();

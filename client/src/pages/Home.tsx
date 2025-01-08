@@ -10,7 +10,7 @@ import heartIcon from '../assets/heart icon.png';
 import peopleIcon from '../assets/people icon.png';
 import frame22Image from '../assets/Frame 22.png';
 import frame23Image from '../assets/Frame 23.png';
-import logo from '../assets/logo.png';
+import logo from '../assets/Logo.png';
 
 const Home: React.FC = () => {
   const { t, i18n } = useTranslation();
