@@ -267,31 +267,64 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .heroSection {
-    min-height: 200px; /* Reduce the minimum height */
-    background-size: contain; /* Adjust background scaling */
-    justify-content: center; /* Center-align content on small screens */
+  .missionSection,
+  .iconGrid {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .missionSection {
-    flex-direction: column; /* Stack items vertically */
-    padding: 1rem 0; /* Reduce padding */
-    gap: 1rem; /* Adjust spacing */
+  .iconGrid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle,
+  .heroTagline {
+    font-size: 1.5rem;
+  }
+
+  .missionImage {
+    max-width: 100%;
+  }
+
+  .missionContent {
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
-  .heroSection {
-    min-height: 150px; /* Further reduce height */
-    background-size: cover; /* Maintain cover scaling */
-    padding: 0.5rem; /* Add slight padding */
+  .heroTitle {
+    font-size: 2rem;
   }
 
-  .missionSection {
-    padding: 0.5rem; /* Tighten padding */
-    gap: 0.5rem; /* Reduce gap further */
+  .heroSubtitle,
+  .heroTagline {
+    font-size: 1.25rem;
   }
 }
+  .heroSubtitle,
+  .heroTagline {
+    font-size: 1.25rem;
+  }
+
+  .iconCard {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .missionContent p {
+    font-size: 1rem;
+  }
+
+  .missionButton {
+    width: 100%;
+    height: auto;
+    padding: 0.75rem;
+  }
 
 /* What We Provide Section */
 .provideSection {
