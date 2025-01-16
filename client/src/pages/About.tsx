@@ -151,7 +151,7 @@ const About: React.FC = () => {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              Language
+              {t('header.language')}
               {showDropdown && (
                 <ul className={styles.dropdown}>
                   <li onClick={() => handleLanguageChange('en')}>English</li>
