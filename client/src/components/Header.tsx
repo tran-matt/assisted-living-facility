@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navigation menu
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   // Function to handle language change
   const changeLanguage = (lang: string) => {

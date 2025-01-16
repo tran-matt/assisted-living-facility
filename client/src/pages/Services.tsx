@@ -117,9 +117,6 @@ const handleSubmit = (e: React.FormEvent) => {
         </div>
       </section>
 
-      {/* Empty Space */}
-      <section className={styles.emptySpace}></section>
-
       {/* Contact Section */}
       <section className={styles.contactSection}>
         <div className={styles.contactLogo}>

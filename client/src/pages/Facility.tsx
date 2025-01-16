@@ -30,7 +30,7 @@ const Facility: React.FC = () => {
 
   const handleLanguageChange = (language: string) => {
     i18n.changeLanguage(language);
-    setShowDropdown(false); // Close dropdown after selection
+    setShowDropdown(false); 
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

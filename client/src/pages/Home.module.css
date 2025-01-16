@@ -320,13 +320,13 @@
 /* What We Provide Section */
 .provideSection {
   display: flex;
-  align-items: center; /* Vertically align content */
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap; /* Prevent wrapping */
-  max-width: 1200px; /* Constrain section width */
-  margin: 4rem auto; /* Center the section */
-  padding: 0 2rem; /* Add proper horizontal spacing */
-  gap: 2rem; /* Add spacing between text and image */
+  flex-wrap: nowrap; 
+  max-width: 1200px; 
+  margin: 4rem auto; 
+  padding: 0 2rem; 
+  gap: 2rem; 
 }
 
 .provideContent {
@@ -469,7 +469,7 @@
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  gap: 2rem; /* Add spacing between the form and the links */
+  gap: 2rem; 
 }
 
 .contactLinks {
@@ -520,7 +520,7 @@
 .formRow {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  flex-wrap: wrap; 
 }
 
 .contactForm div {
@@ -591,30 +591,30 @@
   }
 
   .contactFormContainer {
-    padding-left: 0; /* Remove left padding */
-    width: 100%; /* Make form take full width */
+    padding-left: 0; 
+    width: 100%; 
   }
 
   .contactForm button {
-    width: 100%; /* Make button span full width */
+    width: 100%;
     height: auto;
-    padding: 0.75rem; /* Adjust padding for readability */
+    padding: 0.75rem; 
   }
 }
 
 @media (max-width: 480px) {
   .contactTitle {
-    font-size: 1.75rem; /* Adjust title size for smaller screens */
+    font-size: 1.75rem; 
   }
 
   .contactForm label {
-    font-size: 14px; /* Smaller label size */
+    font-size: 14px; 
   }
 
   .contactForm input,
   .contactForm textarea {
-    font-size: 14px; /* Smaller input font size */
-    padding: 0.5rem; /* Reduce padding */
+    font-size: 14px; 
+    padding: 0.5rem; 
   }
 }
 

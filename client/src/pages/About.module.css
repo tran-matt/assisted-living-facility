@@ -8,7 +8,7 @@
 
 /* Empty Spacer Area */
 .emptyArea {
-  height: 80px; /* Matches the height from home.module.css */
+  height: 80px; 
   background-color: #ffffff;
   width: 100%;
 }
@@ -27,7 +27,7 @@
 
 @media (max-width: 768px) {
   .heroImage {
-    height: 320px; /* Adjust height for tablets */
+    height: 320px;
   }
 }
 
@@ -99,33 +99,33 @@
   }
 
   .aboutContent {
-    max-width: 100%; /* Full width for smaller screens */
+    max-width: 100%; 
     text-align: center;
   }
 
   .aboutTitle {
-    font-size: 28px; /* Reduce font size */
+    font-size: 28px; 
   }
 
   .aboutText {
-    font-size: 20px; /* Adjust font size */
+    font-size: 20px; 
   }
 
   .aboutImage {
-    width: 100%; /* Full width image */
+    width: 100%; 
     height: auto;
   }
 
   .aboutButton {
     width: 100%;
-    max-width: 300px; /* Constrain button width */
+    max-width: 300px; 
     margin: 0 auto;
   }
 }
 
 @media (max-width: 480px) {
   .aboutTitle {
-    font-size: 24px; /* Further reduce font size */
+    font-size: 24px; 
   }
 
   .aboutText {
