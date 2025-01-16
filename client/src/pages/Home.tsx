@@ -41,8 +41,8 @@ const Home: React.FC = () => {
     e.preventDefault();
     emailjs
       .send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_oks00cs',
+        'template_ktu1gn5', 
         {
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
           phone: formData.phone,
           message: formData.message,
         },
-        'YOUR_USER_ID' // Replace with your EmailJS user ID
+        'Hedu9wnB5lt1fcdIp'
       )
       .then(
         () => {
