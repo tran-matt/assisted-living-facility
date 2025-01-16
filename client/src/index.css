@@ -28,12 +28,12 @@ body {
 }
 
 a {
-  text-decoration: none; /* Preserve link styling */
-  color: inherit; /* Let the color inherit properly */
+  text-decoration: none;
+  color: inherit; 
 }
 
 a:hover {
-  color: inherit; /* Ensure hover styles don't conflict globally */
+  color: inherit; 
 }
 
 h1 {
@@ -42,10 +42,10 @@ h1 {
 }
 
 button, a {
-  padding: 0; /* Reset padding for buttons and links */
-  border: none; /* Ensure no border overrides */
-  font: inherit; /* Inherit the font from parent to match design */
-  background: none; /* Reset background styles */
+  padding: 0; 
+  border: none;
+  font: inherit; 
+  background: none; 
 }
 
 @media (prefers-color-scheme: light) {
