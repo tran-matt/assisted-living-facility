@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 16px; /* Add padding for smaller screens */
+  padding: 0 16px;
   box-sizing: border-box;
 }
 
@@ -18,6 +18,19 @@
   object-fit: cover;
 }
 
+@media (max-width: 768px) {
+  .heroImage {
+    height: 320px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .heroImage {
+    height: 240px; 
+  }
+}
+
+
 /* Empty Space */
 .emptySpace {
   height: 80px;
@@ -31,7 +44,7 @@
   padding: 0 80px;
   margin-bottom: 80px;
   gap: 2rem;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .ourServicesContent {
@@ -59,6 +72,42 @@
   height: 475px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .ourServicesSection {
+    flex-direction: column; 
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  .ourServicesContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ourServicesTitle {
+    font-size: 32px; 
+  }
+
+  .ourServicesText {
+    font-size: 20px; 
+  }
+
+  .ourServicesImage {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .ourServicesTitle {
+    font-size: 28px; 
+  }
+
+  .ourServicesText {
+    font-size: 16px;
+  }
 }
 
 /* Services Levels Section */
@@ -100,6 +149,41 @@
   margin-left: 20px;
 }
 
+@media (max-width: 768px) {
+  .servicesLevelsSection {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  .servicesLevelsContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .servicesLevelsTitle {
+    font-size: 32px;
+  }
+
+  .servicesLevelsList {
+    font-size: 20px;
+  }
+
+  .servicesLevelsImage {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicesLevelsTitle {
+    font-size: 28px; /* Further reduce font size */
+  }
+
+  .servicesLevelsList {
+    font-size: 16px;
+  }
+}
 /* Contact Section */
 .contactSection {
   display: flex;

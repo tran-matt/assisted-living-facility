@@ -208,7 +208,6 @@
   margin: 0 auto;
   padding: 2rem 1rem;
   text-align: center;
-  flex-wrap: wrap;
 }
 
 .sectionTitle {
@@ -220,33 +219,33 @@
 }
 
 .whyChooseTitle {
-  font-family: "Kefa", sans-serif; 
-  font-size: 2.5rem; 
-  color: #006838; 
+  font-family: "Kefa", sans-serif;
+  font-size: 2.5rem;
+  color: #006838;
   font-weight: bold;
   margin-bottom: 2rem;
 }
+
 
 .iconGrid {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  flex-wrap: wrap; 
-  gap: 1rem; 
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Individual icon cards */
 .iconCard {
-  flex: 1; 
+  flex: 1;
   max-width: 320px;
-  background-color: #eef6e9; 
+  background-color: #eef6e9;
   border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem; 
+  padding: 1.5rem;
   text-align: center;
 }
 
@@ -263,14 +262,14 @@
   font-size: 24px;
   font-weight: 600;
   color: #006838;
-  margin: 0 0 0.5rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .iconCard p {
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
-  font-weight: 400; 
-  color: #231f20; 
+  font-weight: 400;
+  color: #231f20;
   line-height: 1.5;
 }
 /* Title styling */
@@ -291,66 +290,32 @@
   line-height: 1.5;
 }
 
-/* Responsive Design */
+/* Responsive Design for Why Choose Section */
 @media (max-width: 768px) {
-  .missionSection,
   .iconGrid {
     flex-direction: column;
     align-items: center;
-  }
-
-  .iconGrid {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-
-  .heroSubtitle,
-  .heroTagline {
-    font-size: 1.5rem;
-  }
-
-  .missionImage {
-    max-width: 100%;
-  }
-
-  .missionContent {
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .heroTitle {
-    font-size: 2rem;
-  }
-
-  .heroSubtitle,
-  .heroTagline {
-    font-size: 1.25rem;
-  }
-}
-  .heroSubtitle,
-  .heroTagline {
-    font-size: 1.25rem;
   }
 
   .iconCard {
     max-width: 100%;
     margin-bottom: 1rem;
   }
+}
 
-  .missionContent p {
-    font-size: 1rem;
+@media (max-width: 480px) {
+  .whyChooseTitle {
+    font-size: 2rem;
   }
 
-  .missionButton {
-    width: 100%;
-    height: auto;
-    padding: 0.75rem;
+  .iconCard h3 {
+    font-size: 20px;
   }
+
+  .iconCard p {
+    font-size: 16px;
+  }
+}
 
 /* What We Provide Section */
 .provideSection {
