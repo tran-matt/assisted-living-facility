@@ -28,12 +28,12 @@ body {
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  text-decoration: none; /* Preserve link styling */
+  color: inherit; /* Let the color inherit properly */
 }
+
 a:hover {
-  color: #ffffff;
+  color: inherit; /* Ensure hover styles don't conflict globally */
 }
 
 h1 {
@@ -41,23 +41,11 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button, a {
+  padding: 0; /* Reset padding for buttons and links */
+  border: none; /* Ensure no border overrides */
+  font: inherit; /* Inherit the font from parent to match design */
+  background: none; /* Reset background styles */
 }
 
 @media (prefers-color-scheme: light) {

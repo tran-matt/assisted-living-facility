@@ -68,7 +68,7 @@ const handleSubmit = (e: React.FormEvent) => {
         setStatus('error');
       }
     );
-}; // <-- This closing brace was missing
+}; 
 
 
   return (
@@ -82,20 +82,28 @@ const handleSubmit = (e: React.FormEvent) => {
         </div>
       </section>
 
+      {/* Empty Spacer Area */}
+<div className={styles.emptyArea}></div>
+
       {/* Mission Section */}
       <section className={styles.missionSection}>
-        <img className={styles.missionImage} src={missionImage} alt={t('home.missionAlt')} />
-        <img className={styles.frame23Image} src={frame23Image} alt={t('home.decorativeAlt')} />
-        <div className={styles.missionContent}>
-          <h2 className={styles.missionTitle}>{t('home.missionTitle')}</h2>
-          <p>{t('home.missionText')}</p>
-          <div className={styles.missionButtonWrapper}>
-            <Link to="/about" className={styles.missionButton}>
-              {t('home.aboutButton')}
-            </Link>
-          </div>
-        </div>
-      </section>
+  <img
+    className={styles.missionImage}
+    src={missionImage}
+    alt={t('home.missionAlt')}
+  />
+  <div className={styles.missionContent}>
+    <h2 className={styles.missionTitle}>{t('home.missionTitle')}</h2>
+    <p>{t('home.missionText')}</p>
+    <div className={styles.missionButtonWrapper}>
+  <Link to="/about" className={styles.missionButton}>
+    {t('home.aboutButton')}
+  </Link>
+</div>
+
+  </div>
+</section>
+
 
       {/* Why Choose Section */}
       <section className={styles.whyChooseSection}>
