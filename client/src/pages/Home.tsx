@@ -37,37 +37,39 @@ const Home: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    emailjs
-      .send(
-        'service_oks00cs',
-        'template_ktu1gn5', 
-        {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-        },
-        'Hedu9wnB5lt1fcdIp'
-      )
-      .then(
-        () => {
-          setStatus('success');
-          setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            message: '',
-          });
-        },
-        () => {
-          setStatus('error');
-        }
-      );
-  };
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  emailjs
+    .send(
+      'service_oks00cs',
+      'template_ktu1gn5',
+      {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      },
+      'Hedu9wnB5lt1fcdIp'
+    )
+    .then(
+      () => {
+        setStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          message: '',
+        });
+      },
+      (error) => {
+        console.error('EmailJS Error:', error);
+        setStatus('error');
+      }
+    );
+}; // <-- This closing brace was missing
+
 
   return (
     <div className={styles.homePage}>
