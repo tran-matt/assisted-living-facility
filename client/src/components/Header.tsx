@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from '../assets/Logo.png'; 
+import logo from '../assets/Logo.png';
 import styles from './Header.module.css';
 
 const Header: React.FC = () => {
-  const { t, i18n } = useTranslation(); // Initialize the translation hook
+  const { t, i18n } = useTranslation();
+  const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navigation menu
 
   // Function to handle language change
   const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang); // Change the language globally
+    i18n.changeLanguage(lang);
+  };
+
+  // Function to toggle navigation visibility
+  const toggleNav = () => {
+    setIsNavOpen((prev) => !prev);
   };
 
   return (
@@ -19,25 +25,34 @@ const Header: React.FC = () => {
           <img src={logo} alt={t('header.logoAlt')} className={styles.logo} />
         </Link>
       </div>
-      <nav className={styles.nav}>
-        <Link to="/" className={styles.navLink}>
+
+      {/* Hamburger Menu */}
+      <div className={styles.hamburger} onClick={toggleNav}>
+        <div />
+        <div />
+        <div />
+      </div>
+
+      {/* Navigation Menu */}
+      <nav className={`${styles.nav} ${isNavOpen ? styles.active : ''}`}>
+        <Link to="/" className={styles.navLink} onClick={() => setIsNavOpen(false)}>
           {t('header.home')}
         </Link>
-        <Link to="/about" className={styles.navLink}>
+        <Link to="/about" className={styles.navLink} onClick={() => setIsNavOpen(false)}>
           {t('header.about')}
         </Link>
-        <Link to="/services" className={styles.navLink}>
+        <Link to="/services" className={styles.navLink} onClick={() => setIsNavOpen(false)}>
           {t('header.services')}
         </Link>
-        <Link to="/facility" className={styles.navLink}>
+        <Link to="/facility" className={styles.navLink} onClick={() => setIsNavOpen(false)}>
           {t('header.facility')}
         </Link>
 
         {/* Language Selector */}
         <div className={styles.language}>
           <select
-            onChange={(e) => changeLanguage(e.target.value)} // Update language globally
-            value={i18n.language} // Reflect current language in the dropdown
+            onChange={(e) => changeLanguage(e.target.value)}
+            value={i18n.language}
           >
             <option value="en">English</option>
             <option value="ko">한국어</option>

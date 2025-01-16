@@ -78,7 +78,7 @@ const handleSubmit = (e: React.FormEvent) => {
       </section>
 
       {/* Empty Space */}
-      <section className={styles.emptySpace}></section>
+      <section className={styles.emptyArea}></section>
 
       {/* About Section */}
       <section className={styles.aboutSection}>
@@ -98,7 +98,7 @@ const handleSubmit = (e: React.FormEvent) => {
       </section>
 
       {/* Empty Space */}
-      <section className={styles.emptySpace}></section>
+      <section className={styles.emptyArea}></section>
 
       {/* Certifications Section */}
       <section className={styles.certificationsSection}>

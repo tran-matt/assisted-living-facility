@@ -3,10 +3,10 @@
   font-family: Arial, sans-serif;
   background-color: #ffffff;
   width: 100%;
-  max-width: 1440px; 
-  margin: 0 auto; 
-  overflow-x: hidden; 
-  padding: 0 16px; 
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  padding: 0 16px;
   box-sizing: border-box;
 }
 
@@ -14,23 +14,23 @@
 /* Hero Section */
 .heroSection {
   position: relative;
-  width: 100%; 
-  height: auto; 
-  min-height: 300px; 
+  width: 100%;
+  height: auto;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-image: url('../assets/Hero.png');
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .heroText {
-  position: absolute; 
-  left: 5%; 
-  top: 50%; 
-  transform: translateY(-50%); 
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
   color: #006838;
   text-align: left;
   max-width: 500px;
@@ -38,15 +38,15 @@
 
 .heroTitle {
   font-family: "Kefa", sans-serif;
-  font-size: 48px; 
+  font-size: 48px;
   font-weight: bold;
   margin: 0;
-  color: #006838; 
+  color: #006838;
 }
 
 .heroSubtitle {
   font-family: "Open Sans", sans-serif;
-  font-size: 24px; 
+  font-size: 24px;
   font-weight: 600;
   margin: 0.5rem 0;
   color: #006838;
@@ -54,28 +54,28 @@
 
 .heroTagline {
   font-family: "Open Sans", sans-serif;
-  font-size: 20px; 
+  font-size: 20px;
   font-weight: 400;
   margin-top: 0.5rem;
   color: #000000;
 }
 
-/* Add responsive design for smaller screens */
+/* Responsive Design for Hero Section */
 @media (max-width: 768px) {
   .heroSection {
-    height: auto; 
+    height: auto;
     background-position: top;
   }
 
   .heroText {
-    left: 2rem; 
+    left: 2rem;
     right: 2rem;
-    text-align: center; 
-    transform: translateY(-30%); 
+    text-align: center;
+    transform: translateY(-30%);
   }
 
   .heroTitle {
-    font-size: 36px; 
+    font-size: 36px;
   }
 
   .heroSubtitle {
@@ -87,6 +87,19 @@
   }
 }
 
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 28px;
+  }
+
+  .heroSubtitle {
+    font-size: 18px;
+  }
+
+  .heroTagline {
+    font-size: 14px;
+  }
+}
 
 /* Empty Spacer Area */
 .emptyArea {
@@ -99,47 +112,46 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  padding: 0 80px; /* Match the About page padding */
-  gap: 2rem; /* Add spacing between image and text */
+  flex-wrap: wrap;
+  padding: 0 80px;
+  gap: 2rem;
 }
 
-
 .missionImage {
-  width: 475px; /* Match About page image width */
-  height: auto; /* Maintain aspect ratio */
+  width: 475px;
+  height: auto;
   object-fit: cover;
-  border-radius: 8px; /* Match About page styling */
+  border-radius: 8px;
 }
 
 .missionContent {
   flex: 1;
-  max-width: 620px; /* Match About page text width */
+  max-width: 620px;
 }
 
 .missionTitle {
   font-size: 2rem;
   font-weight: bold;
   color: #006838;
-  margin-bottom: 1rem; /* Ensure spacing below title */
+  margin-bottom: 1rem;
 }
 
 .missionContent p {
   font-size: 1.1rem;
-  line-height: 1.75; /* Increase line height for readability */
+  line-height: 1.75;
   color: #231f20;
-  margin-bottom: 1rem; /* Add spacing below paragraph */
+  margin-bottom: 1rem;
 }
 
 .missionButtonWrapper {
-  margin-top: 1.5rem; /* Adjust spacing between text and button */
+  margin-top: 1.5rem;
   display: flex;
-  justify-content: flex-start; /* Align button to the left */
+  justify-content: flex-start;
 }
 
 .missionButton {
-  width: 158px; /* Exact width */
-  height: 47px; /* Exact height */
+  width: 158px;
+  height: 47px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -159,6 +171,36 @@
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Responsive Design for Mission Section */
+@media (max-width: 768px) {
+  .missionSection {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  .missionImage {
+    width: 100%;
+  }
+
+  .missionContent {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .missionTitle {
+    font-size: 1.75rem;
+  }
+
+  .missionContent p {
+    font-size: 1rem;
+  }
+
+  .missionButton {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
 /* Why Choose Section */
 .whyChooseSection {
   width: 100%;
@@ -323,13 +365,13 @@
 }
 
 .provideContent {
-  flex: 1; /* Allow content to take up available space */
+  flex: 1;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Space between title, description, and button */
-  max-width: 620px; /* Limit the width of the text content */
-  justify-content: center; /* Center align the text vertically */
+  gap: 1rem;
 }
+
 
 .provideTitle {
   font-family: 'Kefa', sans-serif;
@@ -344,6 +386,7 @@
   line-height: 1.75;
   color: #231f20;
 }
+
 .provideButton {
   width: 286px;
   height: 57px;
@@ -370,35 +413,40 @@
 }
 
 .provideImages {
-  flex: 0 0 40%; /* Ensure image takes up 40% of the section width */
-  max-width: 475px; /* Set maximum width for the image */
-  height: auto; /* Maintain aspect ratio */
-  display: flex; /* Ensure flex alignment */
-  align-items: center; /* Align image vertically */
+  flex: 0 0 40%;
+  max-width: 475px;
+  height: auto;
+  display: flex;
+  align-items: center;
 }
 
 .provideImage {
-  width: 100%; /* Fill the available space */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Prevent image distortion */
-  border-radius: 8px; /* Rounded corners for consistency */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-/* Responsive Design for Smaller Screens */
+
+/* Responsive Design for Provide Section */
 @media (max-width: 768px) {
   .provideSection {
-    flex-direction: column; /* Stack text and image vertically */
-    align-items: center; /* Center align content */
-    padding: 0 16px; /* Reduce padding for smaller screens */
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px;
   }
 
   .provideContent {
-    text-align: center; /* Center-align text for smaller screens */
-    max-width: 100%; /* Allow full width */
+    text-align: center;
+    max-width: 100%;
   }
 
   .provideImages {
-    max-width: 100%; /* Allow image to take full width */
+    max-width: 100%;
+  }
+
+  .provideButton {
+    width: 100%;
   }
 }
 
@@ -443,6 +491,46 @@
 }
 
 /* Contact Form Section */
+/* Contact Section */
+.contactSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1440px;
+  margin: 80px auto;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 2rem; /* Add spacing between the form and the links */
+}
+
+.contactLinks {
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contactLinks li {
+  margin-bottom: 8px;
+}
+
+.contactLinks li a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.contactLinks li a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Form Section */
 .contactFormContainer {
   flex: 2;
   display: flex;
@@ -454,7 +542,7 @@
   font-family: "Kefa", sans-serif;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #006838; 
+  color: #006838;
   margin-bottom: 1rem;
 }
 
@@ -467,6 +555,7 @@
 .formRow {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .contactForm div {
@@ -479,21 +568,20 @@
 .contactForm label {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
-  font-weight: 600; 
-  color: #000000; 
+  font-weight: 600;
+  color: #000000;
 }
 
 .contactForm input,
 .contactForm textarea {
-  flex: 1;
   font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-  font-weight: 400; 
-  color: #000000; 
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
   padding: 0.75rem;
-  border: 1px solid #d9d9d9; 
+  border: 1px solid #d9d9d9;
   border-radius: 8px;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   box-sizing: border-box;
 }
 
@@ -504,7 +592,7 @@
 
 .contactForm button {
   width: 158px;
-  height: 57px;
+  height: 47px;
   background: linear-gradient(to bottom, #f98e5c, #ffb895);
   color: #ffffff;
   font-family: 'Open Sans', sans-serif;
@@ -514,7 +602,7 @@
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -522,6 +610,49 @@
   transform: scale(1.05);
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 }
+
+/* Responsive Design for Contact Section */
+@media (max-width: 768px) {
+  .contactSection {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    padding: 1.5rem; /* Reduce padding */
+    gap: 2rem; /* Add spacing between the form and links */
+  }
+
+  .contactLinks {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .contactFormContainer {
+    padding-left: 0; /* Remove left padding */
+    width: 100%; /* Make form take full width */
+  }
+
+  .contactForm button {
+    width: 100%; /* Make button span full width */
+    height: auto;
+    padding: 0.75rem; /* Adjust padding for readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .contactTitle {
+    font-size: 1.75rem; /* Adjust title size for smaller screens */
+  }
+
+  .contactForm label {
+    font-size: 14px; /* Smaller label size */
+  }
+
+  .contactForm input,
+  .contactForm textarea {
+    font-size: 14px; /* Smaller input font size */
+    padding: 0.5rem; /* Reduce padding */
+  }
+}
+
 
 .languageSelect {
   font-family: 'Open Sans', sans-serif;
