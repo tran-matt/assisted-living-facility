@@ -38,38 +38,39 @@ const Facility: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    emailjs
-      .send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-        },
-        'YOUR_USER_ID' // Replace with your EmailJS user ID
-      )
-      .then(
-        () => {
-          setStatus('success');
-          setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            message: '',
-          });
-        },
-        () => {
-          setStatus('error');
-        }
-      );
-  };
+   // Handle form submission
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  emailjs
+    .send(
+      'service_oks00cs',
+      'template_ktu1gn5',
+      {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      },
+      'Hedu9wnB5lt1fcdIp'
+    )
+    .then(
+      () => {
+        setStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          message: '',
+        });
+      },
+      (error) => {
+        console.error('EmailJS Error:', error);
+        setStatus('error');
+      }
+    );
+}; 
 
   const images = [img1, img2, img3, img4, img5, img6, img7, img8];
 
